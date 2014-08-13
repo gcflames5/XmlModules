@@ -49,17 +49,18 @@ public class MaxBuildHeightModule extends Module {
 
     private int maxBuildHeight;
 
-    public MaxBuildHeightModule(int maxBuildHeight) {
+    public MaxBuildHeightModule(ModuleContainer container, int maxBuildHeight) {
+        super(container);
         this.maxBuildHeight = maxBuildHeight;
     }
     
     @Override
-    public void onEnable() {
+    public void onEnable() { //optional
         System.out.println("Enabling MaxBuildModule");
     }
 
     @Override
-    public void onDisable() {
+    public void onDisable() { //optional
         System.out.println("Disabling MaxBuildModule");
     }
 
@@ -68,7 +69,7 @@ public class MaxBuildHeightModule extends Module {
     }
 
     public static Module parse(ModuleContainer container, Document doc) {
-        return new MaxBuildHeightModule(Integer.valueOf(doc.getRootElement().getChild("maxbuildheight").getTextNormalize()));
+        return new MaxBuildHeightModule(container, Integer.valueOf(doc.getRootElement().getChild("maxbuildheight").getTextNormalize()));
     }
 }
 ```
